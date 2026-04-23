@@ -12,6 +12,19 @@ dist
 dist-ssr
 coverage
 *.local
+*.tsbuildinfo
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# Docusaurus artifacts
+docs-site/.docusaurus
+docs-site/build
+
+# Test artifacts
+.vitest
 
 # Editor directories and files
 .vscode/*
