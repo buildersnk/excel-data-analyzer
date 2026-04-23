@@ -1,73 +1,87 @@
-# React + TypeScript + Vite
+# Excel Data Analyzer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Upload multiple Excel files, model entities/relationships on a canvas, run SQL queries, and visualize results with charts.
 
-Currently, two official plugins are available:
+## What This App Does
+- Imports `.xlsx`, `.xls`, and `.csv` files (sheet-level parsing)
+- Shows detected columns and row counts per source table
+- Lets you create a data model in a canvas (entities + relationship edges)
+- Provides a SQL Lab with schema explorer, templates, and query history
+- Executes SQL in-browser using **SQLite WASM** (`sql.js`)
+- Renders query output as both table and chart (bar/line)
+- Supports chart presets stored in `localStorage`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech Stack
+- React + TypeScript + Vite
+- React Flow (canvas modeling)
+- `xlsx` (Excel parsing)
+- `sql.js` (SQLite WASM in browser)
+- Recharts (charting)
+- Docusaurus (project docs site)
 
-## React Compiler
+## Project Structure
+- `src/` main app
+- `scripts/generate-sample-excel.mjs` sample Excel generator
+- `sample-data/` generated sample files
+- `docs/` spec-first governance docs (spec, changelog, context admin)
+- `docs-site/` Docusaurus docs app
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Getting Started
+Install dependencies:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Run app + docs together:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+Default URLs:
+- App: `http://localhost:5173`
+- Docs: `http://localhost:3000/docs/intro`
+
+## Helpful Scripts
+- `npm run dev` start app and docs together
+- `npm run dev:app` start Vite app only
+- `npm run dev:docs` start Docusaurus docs only
+- `npm run build` build Vite app
+- `npm run build:docs` build Docusaurus docs
+- `npm run lint` run ESLint
+
+## Generate Sample Excel Data
+
+```bash
+node scripts/generate-sample-excel.mjs
+```
+
+Generated files:
+- `sample-data/employees.xlsx`
+- `sample-data/departments.xlsx`
+- `sample-data/projects.xlsx`
+
+## Docs Link From App Header
+The app hamburger menu opens docs using `VITE_DOCS_URL`.
+
+Default fallback:
+- `http://localhost:3000/docs/intro`
+
+Optional override in `.env`:
+
+```bash
+VITE_DOCS_URL=http://localhost:3000/docs/intro
+```
+
+## Spec-First Workflow
+Governance docs:
+- `docs/specs/EXCEL_DATA_MODEL_STUDIO_SPEC.md`
+- `docs/CHANGELOG_TRACKER.md`
+- `docs/CONTEXT_ADMIN.md`
+
+Expected workflow:
+1. Update spec first
+2. Implement code changes
+3. Update changelist tracker
+4. Validate with `npm run lint` and `npm run build`
