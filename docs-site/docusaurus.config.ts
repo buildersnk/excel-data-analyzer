@@ -5,8 +5,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'Excel Data Analyzer Docs',
-  tagline: 'Spec-first documentation and changelist tracking',
+  title: 'Excel Data Model Studio Docs',
+  tagline: 'User guide, architecture, and feature development documentation',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -22,7 +22,7 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'your-org', // Usually your GitHub org/user name.
+  organizationName: 'buildersnk', // Usually your GitHub org/user name.
   projectName: 'excel-data-analyzer', // Usually your repo name.
 
   onBrokenLinks: 'throw',
@@ -41,7 +41,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/your-org/excel-data-analyzer/tree/main/docs-site/',
+          editUrl: 'https://github.com/buildersnk/excel-data-analyzer/tree/master/docs-site/',
         },
         blog: {
           showReadingTime: true,
@@ -49,7 +49,7 @@ const config: Config = {
             type: ['rss', 'atom'],
             xslt: true,
           },
-          editUrl: 'https://github.com/your-org/excel-data-analyzer/tree/main/docs-site/',
+          editUrl: 'https://github.com/buildersnk/excel-data-analyzer/tree/master/docs-site/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -69,7 +69,7 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'Excel Data Analyzer Docs',
+      title: 'Data Model Studio Docs',
       logo: {
         alt: 'Excel Data Analyzer Logo',
         src: 'img/logo.svg',
@@ -82,14 +82,14 @@ const config: Config = {
           label: 'Docs',
         },
         {
-          href: 'https://github.com/your-org/excel-data-analyzer',
+          href: 'https://github.com/buildersnk/excel-data-analyzer',
           label: 'GitHub',
           position: 'right',
         },
       ],
     },
     footer: {
-      style: 'dark',
+      style: 'light',
       links: [
         {
           title: 'Docs',
@@ -109,12 +109,12 @@ const config: Config = {
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/your-org/excel-data-analyzer',
+              href: 'https://github.com/buildersnk/excel-data-analyzer',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Excel Data Analyzer. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Excel Data Model Studio. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,

@@ -1,4 +1,6 @@
 # Excel Data Analyzer
+[![Build](https://github.com/buildersnk/excel-data-analyzer/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/buildersnk/excel-data-analyzer/actions/workflows/build.yml)
+[![Test](https://github.com/buildersnk/excel-data-analyzer/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/buildersnk/excel-data-analyzer/actions/workflows/test.yml)
 
 Upload multiple Excel files, model entities/relationships on a canvas, run SQL queries, and visualize results with charts.
 

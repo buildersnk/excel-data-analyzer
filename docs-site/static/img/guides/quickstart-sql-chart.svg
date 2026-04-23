@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 420" role="img" aria-label="Quickstart SQL and chart step">
+  <rect width="980" height="420" fill="#f7f7fc"/>
+  <rect x="40" y="40" width="900" height="340" rx="16" fill="#ffffff" stroke="#d4d9f1"/>
+
+  <rect x="70" y="78" width="430" height="270" rx="12" fill="#eef2ff" stroke="#bfcaf2"/>
+  <text x="92" y="106" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="16" fill="#42507a">SQL Editor</text>
+  <rect x="92" y="122" width="386" height="202" rx="8" fill="#fafbff" stroke="#ccd4f0"/>
+  <text x="106" y="151" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="13" fill="#48537b">SELECT e.name, d.department_name, p.project_name</text>
+  <text x="106" y="172" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="13" fill="#48537b">FROM employees e</text>
+  <text x="106" y="193" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="13" fill="#48537b">JOIN departments d ON e.department_id = d.department_id</text>
+  <text x="106" y="214" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="13" fill="#48537b">JOIN projects p ON p.owner_employee_id = e.employee_id;</text>
+
+  <rect x="530" y="78" width="380" height="156" rx="12" fill="#f4ecff" stroke="#cabdf0"/>
+  <text x="552" y="106" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="16" fill="#42507a">Results</text>
+  <rect x="552" y="120" width="336" height="96" rx="8" fill="#ffffff" stroke="#d9dcf3"/>
+  <path d="M552 148h336M552 176h336" stroke="#e4e7f8"/>
+
+  <rect x="530" y="246" width="380" height="102" rx="12" fill="#fff0f6" stroke="#efc0d6"/>
+  <text x="552" y="274" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="16" fill="#42507a">Chart Preview</text>
+  <path d="M570 328l48-30 50 8 52-42 54 18 56-24" fill="none" stroke="#9b8fdf" stroke-width="4" stroke-linecap="round"/>
+</svg>

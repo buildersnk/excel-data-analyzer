@@ -1,94 +1,70 @@
 .appShell {
-  width: calc(100% - 24px);
-  margin: 12px auto 24px;
+  width: min(1640px, calc(100% - 28px));
+  margin: 14px auto 24px;
+  position: relative;
+  isolation: isolate;
 }
 
 .appHeader {
   position: relative;
-  padding: 20px;
+  z-index: 40;
+  padding: 14px 16px;
   border: 1px solid var(--line);
-  border-radius: 14px;
-  background: linear-gradient(135deg, var(--panel-soft), var(--panel));
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: saturate(160%) blur(14px);
   box-shadow: var(--elevated);
 }
 
 .headerTopRow {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .kicker {
   margin: 0;
-  color: var(--accent-muted);
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  font-family: var(--mono);
+  color: var(--text-strong);
+  font-size: var(--type-title-3);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  font-weight: 600;
 }
 
-.headerMenuWrap {
-  position: relative;
-}
-
-.hamburgerButton {
+.docsLinkButton,
+.themeToggleButton {
   border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--surface-soft);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.8);
   width: 40px;
   height: 34px;
   display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
+  color: #4f4f53;
   cursor: pointer;
 }
 
-.hamburgerButton span {
-  width: 16px;
-  height: 2px;
-  background: #5d6984;
-  border-radius: 999px;
-}
-
-.hamburgerMenuPanel {
-  position: absolute;
-  top: 40px;
-  right: 0;
-  min-width: 180px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: #ffffff;
-  padding: 8px;
-  box-shadow: 0 8px 24px rgba(35, 44, 61, 0.15);
-  z-index: 20;
-}
-
-.menuSectionLabel {
-  font-size: 11px;
-  color: #7a859e;
-  margin-bottom: 6px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-family: var(--mono);
-}
-
-.menuLink {
-  display: block;
-  border: 1px solid #d5dceb;
-  border-radius: 7px;
-  background: #f5f8ff;
-  color: #3f4b61;
+.docsLinkButton {
   text-decoration: none;
-  font-size: 13px;
-  padding: 8px 10px;
 }
 
-.menuLink:hover {
-  border-color: #b7c3df;
-  background: #edf2fb;
+.docsLinkButton:hover,
+.themeToggleButton:hover {
+  background: #ececef;
+  border-color: #bcbec6;
+}
+
+.themeIcon {
+  width: 18px;
+  height: 18px;
 }
 
 .appHeader h1 {
@@ -104,41 +80,48 @@
 
 .tabRow {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   margin: 14px 0;
   flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.68);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 5px;
 }
 
 .tabButton {
-  border: 1px solid var(--line);
-  background: var(--panel);
-  color: var(--text);
+  border: 1px solid transparent;
+  background: transparent;
+  color: #525257;
   font: inherit;
   font-weight: 600;
-  padding: 9px 13px;
+  font-size: var(--type-body);
+  padding: 9px 14px;
   border-radius: 10px;
   cursor: pointer;
-  transition: border-color 0.18s ease, background-color 0.18s ease;
+  transition: all 0.18s ease;
 }
 
 .tabButton:hover {
-  border-color: var(--accent-muted);
-  background: var(--panel-soft);
+  color: #1d1d1f;
+  background: rgba(255, 255, 255, 0.72);
 }
 
 .tabButton.active {
-  color: var(--text-strong);
-  border-color: var(--accent-muted);
-  background: linear-gradient(120deg, var(--accent-soft), var(--panel-soft));
+  color: #1d1d1f;
+  border-color: rgba(0, 0, 0, 0.06);
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
 .tabPanel {
   border: 1px solid var(--line);
-  border-radius: 14px;
-  background: var(--panel);
-  padding: 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(14px);
+  padding: 16px;
   min-height: 74vh;
-  box-shadow: var(--elevated);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 .uploadCard {
@@ -156,7 +139,18 @@
 .sourceCard h3,
 .card h2,
 .card h3 {
-  margin: 0 0 6px;
+  margin: 0 0 8px;
+}
+
+.uploadCard h2,
+.card h2 {
+  font-size: var(--type-title-3);
+  line-height: 1.25;
+}
+
+.sourceCard h3,
+.card h3 {
+  font-size: var(--type-title-3);
 }
 
 .uploadCard p,
@@ -206,7 +200,7 @@
   cursor: pointer;
   padding: 8px 11px;
   font: inherit;
-  font-size: 13px;
+  font-size: var(--type-body);
 }
 
 .sourceCardHeader button:hover,
@@ -315,7 +309,7 @@
 }
 
 .fieldLabel {
-  font-size: 11px;
+  font-size: var(--type-caption);
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -503,13 +497,13 @@
 }
 
 .historyItem span {
-  font-size: 12px;
+  font-size: var(--type-caption);
   color: #435069;
   font-family: var(--mono);
 }
 
 .historyItem small {
-  font-size: 10px;
+  font-size: 11px;
   color: #7f8aa2;
 }
 
@@ -527,7 +521,7 @@
   text-align: left;
   cursor: pointer;
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: var(--type-caption);
 }
 
 .sqlTableButton.active {
@@ -543,7 +537,7 @@
 }
 
 .sqlExplorerTitle {
-  font-size: 12px;
+  font-size: var(--type-caption);
   color: var(--text-muted);
   margin-bottom: 8px;
 }
@@ -562,7 +556,7 @@
   text-align: left;
   cursor: pointer;
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: var(--type-caption);
   display: flex;
   justify-content: space-between;
   gap: 8px;
@@ -602,7 +596,7 @@
 
 .sqlEngineStatus {
   margin-top: 6px;
-  font-size: 12px;
+  font-size: var(--type-caption);
   color: #62708a;
 }
 
@@ -629,7 +623,7 @@
   color: #3a465b;
   border-radius: 999px;
   padding: 5px 10px;
-  font-size: 12px;
+  font-size: var(--type-caption);
   cursor: pointer;
 }
 
@@ -638,7 +632,7 @@
   min-height: 240px;
   margin-top: 0;
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: var(--type-body);
   resize: vertical;
   line-height: 1.5;
 }
@@ -683,7 +677,7 @@
 .resultTable td {
   border-bottom: 1px solid var(--line);
   text-align: left;
-  font-size: 12px;
+  font-size: var(--type-caption);
   padding: 7px 8px;
   white-space: nowrap;
 }
@@ -712,7 +706,7 @@
 
 .chartHeader h3 {
   margin: 0;
-  font-size: 14px;
+  font-size: var(--type-title-3);
   color: #3f4b61;
 }
 
@@ -727,7 +721,7 @@
   color: #45516a;
   border-radius: 6px;
   padding: 4px 9px;
-  font-size: 12px;
+  font-size: var(--type-caption);
   cursor: pointer;
 }
 
@@ -754,7 +748,7 @@
 .chartConfigRow label {
   display: grid;
   gap: 4px;
-  font-size: 11px;
+  font-size: var(--type-caption);
   color: #687693;
   font-family: var(--mono);
 }
@@ -765,7 +759,7 @@
   color: #3f4b61;
   border-radius: 6px;
   padding: 5px 6px;
-  font-size: 12px;
+  font-size: var(--type-caption);
 }
 
 .chartPresetSave {
@@ -774,7 +768,7 @@
   color: #45516a;
   border-radius: 6px;
   padding: 6px 10px;
-  font-size: 12px;
+  font-size: var(--type-caption);
   cursor: pointer;
   height: 30px;
 }
@@ -800,7 +794,7 @@
   background: #fff;
   color: #44516a;
   border-radius: 6px;
-  font-size: 11px;
+  font-size: var(--type-caption);
   padding: 4px 8px;
   cursor: pointer;
 }
@@ -875,6 +869,82 @@
 
 .react-flow__attribution {
   display: none;
+}
+
+[data-theme='dark'] .appHeader,
+[data-theme='dark'] .tabPanel {
+  background: rgba(28, 29, 33, 0.76);
+}
+
+[data-theme='dark'] .tabRow {
+  background: rgba(30, 31, 35, 0.8);
+}
+
+[data-theme='dark'] .tabButton:hover,
+[data-theme='dark'] .tabButton.active {
+  background: rgba(44, 46, 53, 0.88);
+  color: #f5f5f7;
+}
+
+[data-theme='dark'] .docsLinkButton,
+[data-theme='dark'] .themeToggleButton {
+  background: #1f2126;
+  color: #e7e8ee;
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+[data-theme='dark'] .docsLinkButton:hover,
+[data-theme='dark'] .themeToggleButton:hover {
+  background: #2a2d34;
+}
+
+[data-theme='dark'] .sqlTableButton,
+[data-theme='dark'] .sqlColumnExplorer,
+[data-theme='dark'] .chartPanel,
+[data-theme='dark'] .resultTable th {
+  background: #21242a;
+}
+
+[data-theme='dark'] .sqlColumnButton,
+[data-theme='dark'] .chartToggle,
+[data-theme='dark'] .chartPresetSave,
+[data-theme='dark'] .chartPresetItem,
+[data-theme='dark'] .chartPresetItem button {
+  background: #262a31;
+  color: #d9dce6;
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+[data-theme='dark'] .react-flow {
+  background: #1c1e23;
+}
+
+[data-theme='dark'] .react-flow__background path {
+  stroke: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] .react-flow__controls-button {
+  background: #24262d;
+  color: #eceef5;
+}
+
+[data-theme='dark'] .entityNode {
+  background: linear-gradient(155deg, #2a2d34, #22252c);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+[data-theme='dark'] .entityNodeTitle {
+  color: #f3f4f8;
+}
+
+[data-theme='dark'] .entityNodeMeta {
+  color: #b2b7c7;
+}
+
+[data-theme='dark'] .entityNodeChip {
+  background: #313746;
+  border-color: #3e465a;
+  color: #d9deeb;
 }
 
 @media (max-width: 1400px) {

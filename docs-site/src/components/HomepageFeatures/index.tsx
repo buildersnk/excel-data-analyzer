@@ -14,32 +14,32 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
+    title: 'Data Import Workflow',
     Svg: MountainSvg,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Upload multiple Excel and CSV files, inspect columns instantly, and
+        convert sheets into source tables for modeling.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Visual Data Modeling',
     Svg: TreeSvg,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Build relationships between entities on a canvas and validate your data
+        model before writing SQL.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'SQL and Charts',
     Svg: ReactSvg,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Query your modeled data in SQL Lab and generate chart previews to
+        explore output visually.
       </>
     ),
   },
@@ -48,12 +48,12 @@ const FeatureList: FeatureItem[] = [
 function Feature({title, Svg, description}: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
-      <div className="text--center">
+      <div className={clsx('text--center', styles.featureCard)}>
         <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
+        <div className="padding-horiz--md">
+          <Heading as="h3">{title}</Heading>
+          <p>{description}</p>
+        </div>
       </div>
     </div>
   );

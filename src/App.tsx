@@ -102,6 +102,7 @@ const nodeTypes = {
 
 const QUERY_HISTORY_KEY = 'excel_studio_query_history'
 const CHART_PRESETS_KEY = 'excel_studio_chart_presets'
+const THEME_MODE_KEY = 'excel_studio_theme_mode'
 
 function toNumericValue(value: unknown): number | null {
   if (typeof value === 'number') {
@@ -417,7 +418,14 @@ function normalizeSqlJsResult(rawResult: QueryExecResult[]): QueryOutput {
 function App() {
   const docsUrl = import.meta.env.VITE_DOCS_URL ?? 'http://localhost:3000/docs/intro'
   const [activeTab, setActiveTab] = useState<TabId>('import')
-  const [isHeaderMenuOpen, setIsHeaderMenuOpen] = useState(false)
+  const [themeMode, setThemeMode] = useState<'light' | 'dark'>(() => {
+    if (typeof window === 'undefined') {
+      return 'light'
+    }
+
+    const stored = window.localStorage.getItem(THEME_MODE_KEY)
+    return stored === 'dark' ? 'dark' : 'light'
+  })
   const [importedTables, setImportedTables] = useState<ImportedTable[]>([])
   const [uploadError, setUploadError] = useState<string | null>(null)
   const [isParsing, setIsParsing] = useState(false)
@@ -665,6 +673,15 @@ function App() {
     }
     window.localStorage.setItem(CHART_PRESETS_KEY, JSON.stringify(chartPresets))
   }, [chartPresets])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return
+    }
+
+    window.localStorage.setItem(THEME_MODE_KEY, themeMode)
+    document.documentElement.setAttribute('data-theme', themeMode)
+  }, [themeMode])
 
   const retrySqliteInitialization = useCallback(() => {
     setSqlite(null)
@@ -960,39 +977,68 @@ function App() {
       <header className="appHeader">
         <div className="headerTopRow">
           <p className="kicker">Excel Data Model Studio</p>
-          <div className="headerMenuWrap">
+          <div className="headerActions">
+            <a
+              className="docsLinkButton"
+              href={docsUrl}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open documentation"
+              title="Open documentation"
+            >
+              <svg className="themeIcon" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M6 4.5h8.5a3.5 3.5 0 0 1 3.5 3.5v11.5H9.5A3.5 3.5 0 0 0 6 23V4.5z"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.7"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M6 21V8a3.5 3.5 0 0 1 3.5-3.5H18"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.7"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M9.5 9.3h5M9.5 12.3h5M9.5 15.3h3.6"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </a>
             <button
               type="button"
-              className="hamburgerButton"
-              aria-label="Open help menu"
-              aria-expanded={isHeaderMenuOpen}
-              onClick={() => setIsHeaderMenuOpen((current) => !current)}
+              className="themeToggleButton"
+              aria-label={themeMode === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+              title={themeMode === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+              onClick={() => setThemeMode((current) => (current === 'light' ? 'dark' : 'light'))}
             >
-              <span />
-              <span />
-              <span />
+              {themeMode === 'light' ? (
+                <svg className="themeIcon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M12.2 3.8A8.6 8.6 0 1 0 20 15.6a7.6 7.6 0 0 1-7.8-11.8z"
+                    fill="currentColor"
+                  />
+                </svg>
+              ) : (
+                <svg className="themeIcon" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="4.2" fill="currentColor" />
+                  <path
+                    d="M12 2.5v2.3M12 19.2v2.3M4.5 12h2.3M17.2 12h2.3M5.8 5.8l1.6 1.6M16.6 16.6l1.6 1.6M18.2 5.8l-1.6 1.6M7.4 16.6l-1.6 1.6"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              )}
             </button>
-            {isHeaderMenuOpen ? (
-              <div className="hamburgerMenuPanel">
-                <div className="menuSectionLabel">Help</div>
-                <a
-                  className="menuLink"
-                  href={docsUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={() => setIsHeaderMenuOpen(false)}
-                >
-                  Open Docs
-                </a>
-              </div>
-            ) : null}
           </div>
         </div>
-        <h1>Upload spreadsheets, model entities, and query them with SQL.</h1>
-        <p>
-          Multi-file import feeds a canvas-driven data model. The generated model becomes queryable in
-          SQL Lab.
-        </p>
       </header>
 
       <nav className="tabRow" aria-label="Main workflow tabs">

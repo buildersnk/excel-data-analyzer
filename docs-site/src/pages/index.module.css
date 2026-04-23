@@ -1,18 +1,26 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
-
 .heroBanner {
-  padding: 4rem 0;
+  padding: 4.2rem 0 3.6rem;
   text-align: center;
   position: relative;
   overflow: hidden;
+  background:
+    radial-gradient(circle at 18% 20%, rgba(183, 195, 250, 0.34), transparent 42%),
+    radial-gradient(circle at 82% 10%, rgba(250, 192, 209, 0.28), transparent 40%),
+    linear-gradient(180deg, #f8f7ff 0%, #f2f4ff 100%);
+  border-bottom: 1px solid rgba(133, 143, 195, 0.24);
+}
+
+html[data-theme='dark'] .heroBanner {
+  background:
+    radial-gradient(circle at 18% 20%, rgba(141, 156, 232, 0.26), transparent 42%),
+    radial-gradient(circle at 82% 10%, rgba(188, 133, 170, 0.22), transparent 40%),
+    linear-gradient(180deg, #24273a 0%, #1d2030 100%);
+  border-bottom-color: rgba(148, 160, 225, 0.28);
 }
 
 @media screen and (max-width: 996px) {
   .heroBanner {
-    padding: 2rem;
+    padding: 2.4rem 1rem;
   }
 }
 
@@ -20,4 +28,5 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0.75rem;
 }

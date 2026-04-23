@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 260" role="img" aria-label="Workflow overview">
+  <rect width="1100" height="260" fill="#f7f6ff"/>
+  <g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="20" fill="#2f3552" text-anchor="middle">
+    <rect x="40" y="70" width="220" height="120" rx="16" fill="#e7ebff" stroke="#aeb9f4"/>
+    <text x="150" y="125">Import Files</text>
+    <text x="150" y="152" font-size="14" fill="#5f688d">xlsx / xls / csv</text>
+
+    <rect x="320" y="70" width="220" height="120" rx="16" fill="#e9f3ff" stroke="#a7c8ef"/>
+    <text x="430" y="125">Model Canvas</text>
+    <text x="430" y="152" font-size="14" fill="#5f688d">entities + joins</text>
+
+    <rect x="600" y="70" width="220" height="120" rx="16" fill="#f4ecff" stroke="#c7b4ee"/>
+    <text x="710" y="125">SQL Lab</text>
+    <text x="710" y="152" font-size="14" fill="#5f688d">query + results</text>
+
+    <rect x="880" y="70" width="180" height="120" rx="16" fill="#ffeef5" stroke="#efbad1"/>
+    <text x="970" y="125">Charts</text>
+    <text x="970" y="152" font-size="14" fill="#5f688d">bar / line</text>
+  </g>
+
+  <g stroke="#8e99cf" stroke-width="4" fill="none" stroke-linecap="round">
+    <path d="M260 130h46"/>
+    <path d="M540 130h46"/>
+    <path d="M820 130h46"/>
+  </g>
+  <g fill="#8e99cf">
+    <path d="M306 130l-12-8v16z"/>
+    <path d="M586 130l-12-8v16z"/>
+    <path d="M866 130l-12-8v16z"/>
+  </g>
+</svg>

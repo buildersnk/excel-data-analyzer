@@ -21,7 +21,12 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
+            Open Documentation
+          </Link>
+          <Link
+            className="button button--outline button--lg"
+            to="/docs/user-guide">
+            Read User Guide
           </Link>
         </div>
       </div>
@@ -33,8 +38,8 @@ export default function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={siteConfig.title}
+      description="Technical and user documentation for Excel Data Model Studio.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
